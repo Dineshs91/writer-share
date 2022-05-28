@@ -4,7 +4,6 @@ import RichTextPlugin from "@lexical/react/LexicalRichTextPlugin";
 import ContentEditable from "@lexical/react/LexicalContentEditable";
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import AutoFocusPlugin from "@lexical/react/LexicalAutoFocusPlugin";
-import TreeViewPlugin from "../plugins/TreeViewPlugin";
 import ToolbarPlugin from "../plugins/ToolbarPlugin";
 import { HeadingNode, QuoteNode } from "@lexical/rich-text";
 import { TableCellNode, TableNode, TableRowNode } from "@lexical/table";
@@ -47,24 +46,29 @@ const editorConfig = {
   ]
 };
 
-export default function Editor() {
+export default function Editor(props) {
   return (
     <LexicalComposer initialConfig={editorConfig}>
-      <div className="editor-container">
-        <ToolbarPlugin />
-        <div className="editor-inner">
-          <RichTextPlugin
-            contentEditable={<ContentEditable className="editor-input" />}
-            placeholder={<Placeholder />}
-          />
-          <HistoryPlugin />
-          <AutoFocusPlugin />
-          <CodeHighlightPlugin />
-          <ListPlugin />
-          <LinkPlugin />
-          <AutoLinkPlugin />
-          <ListMaxIndentLevelPlugin maxDepth={7} />
-          <LexicalMarkdownShortcutPlugin transformers={TRANSFORMERS} />
+      <div className="editor-container w-full">
+        <div className="px-2 w-fit md:w-full">
+          <ToolbarPlugin />
+        </div>
+
+        <div ref={props.ele} className="p-2 w-full">
+          <div className="editor-inner my-8 rounded-md">
+            <RichTextPlugin
+              contentEditable={<ContentEditable className="editor-input" />}
+              placeholder={<Placeholder />}
+            />
+            <HistoryPlugin />
+            <AutoFocusPlugin />
+            <CodeHighlightPlugin />
+            <ListPlugin />
+            <LinkPlugin />
+            <AutoLinkPlugin />
+            <ListMaxIndentLevelPlugin maxDepth={7} />
+            <LexicalMarkdownShortcutPlugin transformers={TRANSFORMERS} />
+          </div>
         </div>
       </div>
     </LexicalComposer>
