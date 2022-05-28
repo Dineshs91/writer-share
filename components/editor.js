@@ -54,10 +54,10 @@ export default function Editor(props) {
           <ToolbarPlugin />
         </div>
 
-        <div ref={props.ele} className="mt-2">
+        <div ref={props.ele} className="mt-8">
           <div className="editor-inner rounded-md">
             <RichTextPlugin
-              contentEditable={<ContentEditable className="editor-input aspect-[2/1] h-auto w-full bg-yellow-50/20 rounded-md" />}
+              contentEditable={<ContentEditable className="editor-input aspect-[2/1] h-auto w-full rounded-md" />}
               placeholder={<Placeholder />}
             />
             <HistoryPlugin />

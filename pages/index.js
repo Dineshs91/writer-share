@@ -50,22 +50,25 @@ export default function Home() {
   let ele = useRef()
 
   return (
-    <div className='lg:max-w-2xl lg:mx-auto mt-24'>
-      <Toaster/>
-      <Head>
-        <title>Writer Share</title>
-      </Head>
-      <div className='mx-auto'>
-        <Editor ele={ele} />
+    <section className='bg-gray-800 h-screen'>
+      <div className='px-2 lg:max-w-3xl lg:mx-auto pt-24'>
+        <Toaster/>
+        <Head>
+          <title>Writer Share</title>
+        </Head>
+        <div>
+          <Editor ele={ele} />
+          <div className='text-right space-x-4 max-w-[600px] mx-auto'>
+            <button className='px-2 border rounded bg-white' onClick={() => downloadImage(ele)}>
+              Download
+            </button>
+            <button className='px-2 border rounded bg-white' onClick={() => copyAsPng(ele)}>
+              Copy as PNG
+            </button>
+          </div>
+        </div>
+        
       </div>
-      <div className='text-right space-x-2'>
-        <button className='px-1 border rounded' onClick={() => downloadImage(ele)}>
-          Download
-        </button>
-        <button className='px-1 border rounded' onClick={() => copyAsPng(ele)}>
-          Copy as PNG
-        </button>
-      </div>
-    </div>
+    </section>
   )
 }
