@@ -50,14 +50,14 @@ export default function Editor(props) {
   return (
     <LexicalComposer initialConfig={editorConfig}>
       <div className="editor-container w-full">
-        <div className="px-2 w-fit md:w-full">
+        <div className="w-fit md:w-full">
           <ToolbarPlugin />
         </div>
 
-        <div ref={props.ele} className="p-2 w-full">
-          <div className="editor-inner my-8 rounded-md">
+        <div ref={props.ele} className="mt-2">
+          <div className="editor-inner rounded-md">
             <RichTextPlugin
-              contentEditable={<ContentEditable className="editor-input" />}
+              contentEditable={<ContentEditable className="editor-input aspect-[2/1] h-auto w-full bg-yellow-50/20 rounded-md" />}
               placeholder={<Placeholder />}
             />
             <HistoryPlugin />
