@@ -55,11 +55,11 @@ export default function Editor(props) {
         </div>
 
         <div className="mt-8 overflow-x-scroll p-2">
-          <div className="bg-blue-50 rounded-lg shadow-md">
+          <div style={{backgroundColor: props.bgColor}} className=" rounded-lg shadow-md">
             <div style={{width:props.eleWidth}} className="mx-auto">
               <div ref={props.ele} style={{width:props.eleWidth}} className="h-auto editor-inner rounded-md">
                 <RichTextPlugin
-                  contentEditable={<ContentEditable className="bg-blue-50 editor-input rounded-md" />}
+                  contentEditable={<ContentEditable style={{backgroundColor: props.bgColor}} className="editor-input rounded-md" />}
                   placeholder={<Placeholder />}
                 />
                 <HistoryPlugin />

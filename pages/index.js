@@ -4,6 +4,7 @@ import Editor from '../components/editor'
 import { toPng, toBlob } from 'html-to-image';
 import { useRef, useState } from 'react';
 import { toast, Toaster } from 'react-hot-toast';
+import { TwitterPicker } from 'react-color'
 
 function downloadImage(elementRef) {
   toPng(elementRef.current, { cacheBust: true, })
@@ -50,6 +51,17 @@ export default function Home() {
   let ele = useRef()
 
   let [eleWidth, setEleWidth] = useState('inherit')
+  let [pickerOpen, setPickerOpen] = useState(false)
+  let [bgColor, setBgColor] = useState('bg-white')
+
+  const togglePicker = () => {
+    console.log(pickerOpen)
+    setPickerOpen(!pickerOpen)
+  }
+
+  const colorChange = (color) => {
+    setBgColor(color.hex)
+  }
 
   const optimizeForTwitter = () => {
     // aspect ratio - 2/1 (width/height)
@@ -74,8 +86,19 @@ export default function Home() {
           <title>Writer Share</title>
         </Head>
         <div>
-          <Editor eleWidth={eleWidth} ele={ele} />
+          <Editor bgColor={bgColor} eleWidth={eleWidth} ele={ele} />
           <div className='mt-12 text-right max-w-[600px] mx-auto flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-4 md:justify-end'>
+            <button onClick={togglePicker} style={{backgroundColor: bgColor}} className='relative w-8 h-8 outline-none border border-gray-400 bg-white shadow-md rounded-full'>
+              {
+                pickerOpen &&
+                <div className='absolute top-12 -left-2'  onClick={(e) => e.stopPropagation()}>
+                  <TwitterPicker
+                    onChange={colorChange}
+                    color={bgColor}
+                  />
+                </div>
+              }
+            </button>
             <button className='py-1 px-2 rounded-md shadow-md bg-white hover:shadow hover:shadow-sky-400' onClick={optimizeForTwitter}>
               Optimize for Twitter
             </button>
