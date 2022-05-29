@@ -4,6 +4,7 @@ import RichTextPlugin from "@lexical/react/LexicalRichTextPlugin";
 import ContentEditable from "@lexical/react/LexicalContentEditable";
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import AutoFocusPlugin from "@lexical/react/LexicalAutoFocusPlugin";
+import LexicalOnChangePlugin from '@lexical/react/LexicalOnChangePlugin';
 import ToolbarPlugin from "../plugins/ToolbarPlugin";
 import { HeadingNode, QuoteNode } from "@lexical/rich-text";
 import { TableCellNode, TableNode, TableRowNode } from "@lexical/table";
@@ -18,6 +19,7 @@ import { TRANSFORMERS } from "@lexical/markdown";
 import ListMaxIndentLevelPlugin from "../plugins/ListMaxIndentLevelPlugin";
 import CodeHighlightPlugin from "../plugins/CodeHighlightPlugin";
 import AutoLinkPlugin from "../plugins/AutoLinkPlugin";
+import { useState } from "react";
 
 function Placeholder() {
   return <div className="editor-placeholder">Enter some rich text...</div>;
@@ -54,20 +56,23 @@ export default function Editor(props) {
           <ToolbarPlugin />
         </div>
 
-        <div ref={props.ele} className="mt-8">
-          <div className="editor-inner rounded-md">
-            <RichTextPlugin
-              contentEditable={<ContentEditable className="editor-input aspect-[2/1] h-auto w-full rounded-md" />}
-              placeholder={<Placeholder />}
-            />
-            <HistoryPlugin />
-            <AutoFocusPlugin />
-            <CodeHighlightPlugin />
-            <ListPlugin />
-            <LinkPlugin />
-            <AutoLinkPlugin />
-            <ListMaxIndentLevelPlugin maxDepth={7} />
-            <LexicalMarkdownShortcutPlugin transformers={TRANSFORMERS} />
+        <div className="mt-8 overflow-x-scroll">
+          <div style={{width:props.eleWidth}} className="mx-auto">
+            <div ref={props.ele} style={{width:props.eleWidth}} className="h-auto editor-inner rounded-md">
+              <RichTextPlugin
+                contentEditable={<ContentEditable className="editor-input rounded-md" />}
+                placeholder={<Placeholder />}
+              />
+              <HistoryPlugin />
+              <AutoFocusPlugin />
+              <CodeHighlightPlugin />
+              <ListPlugin />
+              <LinkPlugin />
+              <AutoLinkPlugin />
+              {/* <LexicalOnChangePlugin onChange={onChange} /> */}
+              <ListMaxIndentLevelPlugin maxDepth={7} />
+              <LexicalMarkdownShortcutPlugin transformers={TRANSFORMERS} />
+            </div>
           </div>
         </div>
       </div>
