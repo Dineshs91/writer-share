@@ -4,7 +4,6 @@ import RichTextPlugin from "@lexical/react/LexicalRichTextPlugin";
 import ContentEditable from "@lexical/react/LexicalContentEditable";
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import AutoFocusPlugin from "@lexical/react/LexicalAutoFocusPlugin";
-import LexicalOnChangePlugin from '@lexical/react/LexicalOnChangePlugin';
 import ToolbarPlugin from "../plugins/ToolbarPlugin";
 import { HeadingNode, QuoteNode } from "@lexical/rich-text";
 import { TableCellNode, TableNode, TableRowNode } from "@lexical/table";
@@ -19,7 +18,6 @@ import { TRANSFORMERS } from "@lexical/markdown";
 import ListMaxIndentLevelPlugin from "../plugins/ListMaxIndentLevelPlugin";
 import CodeHighlightPlugin from "../plugins/CodeHighlightPlugin";
 import AutoLinkPlugin from "../plugins/AutoLinkPlugin";
-import { useState } from "react";
 
 function Placeholder() {
   return <div className="editor-placeholder">Enter some rich text...</div>;
@@ -57,11 +55,11 @@ export default function Editor(props) {
         </div>
 
         <div className="mt-8 overflow-x-scroll p-2">
-          <div className="bg-white rounded-lg shadow-md">
+          <div className="bg-blue-50 rounded-lg shadow-card">
             <div style={{width:props.eleWidth}} className="mx-auto">
               <div ref={props.ele} style={{width:props.eleWidth}} className="h-auto editor-inner rounded-md">
                 <RichTextPlugin
-                  contentEditable={<ContentEditable className="editor-input rounded-md" />}
+                  contentEditable={<ContentEditable className="bg-blue-50 editor-input rounded-md" />}
                   placeholder={<Placeholder />}
                 />
                 <HistoryPlugin />

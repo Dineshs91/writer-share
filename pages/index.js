@@ -67,7 +67,7 @@ export default function Home() {
   }
 
   return (
-    <section className='bg-gradient-to-b from-blue-300 to-blue-100 h-screen'>
+    <section className='bg-gray-100 h-screen'>
       <div className='px-2 lg:max-w-3xl lg:mx-auto pt-24'>
         <Toaster/>
         <Head>
