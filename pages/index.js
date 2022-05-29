@@ -76,18 +76,17 @@ export default function Home() {
         <div>
           <Editor eleWidth={eleWidth} ele={ele} />
           <div className='mt-12 text-right max-w-[600px] mx-auto flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-4 md:justify-end'>
-            <button className='py-1 px-2 rounded shadow bg-white hover:shadow hover:shadow-sky-400' onClick={optimizeForTwitter}>
+            <button className='py-1 px-2 rounded shadow-md bg-white hover:shadow hover:shadow-sky-400' onClick={optimizeForTwitter}>
               Optimize for Twitter
             </button>
-            <button className='py-1 px-2 rounded shadow bg-white hover:shadow hover:shadow-sky-400' onClick={() => downloadImage(ele)}>
+            <button className='py-1 px-2 rounded shadow-md bg-white hover:shadow hover:shadow-sky-400' onClick={() => downloadImage(ele)}>
               Download
             </button>
-            <button className='py-1 px-2 rounded shadow bg-white hover:shadow hover:shadow-sky-400' onClick={() => copyAsPng(ele)}>
+            <button className='py-1 px-2 rounded shadow-md bg-white hover:shadow hover:shadow-sky-400' onClick={() => copyAsPng(ele)}>
               Copy as PNG
             </button>
           </div>
         </div>
-        
       </div>
     </section>
   )

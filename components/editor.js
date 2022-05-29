@@ -52,7 +52,7 @@ export default function Editor(props) {
   return (
     <LexicalComposer initialConfig={editorConfig}>
       <div className="editor-container w-full">
-        <div className="w-fit md:w-full bg-white px-4 rounded-lg shadow-lg">
+        <div className="w-fit md:w-full bg-white px-4 rounded-lg shadow-md">
           <ToolbarPlugin />
         </div>
 
