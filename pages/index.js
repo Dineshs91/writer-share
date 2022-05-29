@@ -9,7 +9,7 @@ function downloadImage(elementRef) {
   toPng(elementRef.current, { cacheBust: true, })
       .then((dataUrl) => {
         const link = document.createElement('a')
-        link.download = 'my-image-name.png'
+        link.download = 'notes.png'
         link.href = dataUrl
         link.click()
       })
@@ -76,13 +76,13 @@ export default function Home() {
         <div>
           <Editor eleWidth={eleWidth} ele={ele} />
           <div className='mt-12 text-right max-w-[600px] mx-auto flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-4 md:justify-end'>
-            <button className='py-1 px-2 rounded shadow-md bg-white hover:shadow hover:shadow-sky-400' onClick={optimizeForTwitter}>
+            <button className='py-1 px-2 rounded-md shadow-md bg-white hover:shadow hover:shadow-sky-400' onClick={optimizeForTwitter}>
               Optimize for Twitter
             </button>
-            <button className='py-1 px-2 rounded shadow-md bg-white hover:shadow hover:shadow-sky-400' onClick={() => downloadImage(ele)}>
+            <button className='py-1 px-2 rounded-md shadow-md bg-white hover:shadow hover:shadow-sky-400' onClick={() => downloadImage(ele)}>
               Download
             </button>
-            <button className='py-1 px-2 rounded shadow-md bg-white hover:shadow hover:shadow-sky-400' onClick={() => copyAsPng(ele)}>
+            <button className='py-1 px-2 rounded-md shadow-md bg-white hover:shadow hover:shadow-sky-400' onClick={() => copyAsPng(ele)}>
               Copy as PNG
             </button>
           </div>

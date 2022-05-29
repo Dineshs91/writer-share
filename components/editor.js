@@ -20,7 +20,7 @@ import CodeHighlightPlugin from "../plugins/CodeHighlightPlugin";
 import AutoLinkPlugin from "../plugins/AutoLinkPlugin";
 
 function Placeholder() {
-  return <div className="editor-placeholder">Enter some rich text...</div>;
+  return <div className="editor-placeholder">Enter some text...</div>;
 }
 
 const editorConfig = {
@@ -55,7 +55,7 @@ export default function Editor(props) {
         </div>
 
         <div className="mt-8 overflow-x-scroll p-2">
-          <div className="bg-blue-50 rounded-lg shadow-card">
+          <div className="bg-blue-50 rounded-lg shadow-md">
             <div style={{width:props.eleWidth}} className="mx-auto">
               <div ref={props.ele} style={{width:props.eleWidth}} className="h-auto editor-inner rounded-md">
                 <RichTextPlugin
