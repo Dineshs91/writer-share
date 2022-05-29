@@ -242,9 +242,9 @@ body {
   
   .editor-quote {
     margin: 0;
-    font-size: 15px;
+    font-size: 16px;
     color: rgb(51 51 51);
-    border-left-color: rgb(174 201 255);
+    border-left-color: #76a4ff;
     border-left-width: 4px;
     border-left-style: solid;
     padding-left: 10px;
