@@ -52,26 +52,28 @@ export default function Editor(props) {
   return (
     <LexicalComposer initialConfig={editorConfig}>
       <div className="editor-container w-full">
-        <div className="w-fit md:w-full">
+        <div className="w-fit md:w-full bg-white px-4 rounded-lg shadow-lg">
           <ToolbarPlugin />
         </div>
 
-        <div className="mt-8 overflow-x-scroll">
-          <div style={{width:props.eleWidth}} className="mx-auto">
-            <div ref={props.ele} style={{width:props.eleWidth}} className="h-auto editor-inner rounded-md">
-              <RichTextPlugin
-                contentEditable={<ContentEditable className="editor-input rounded-md" />}
-                placeholder={<Placeholder />}
-              />
-              <HistoryPlugin />
-              <AutoFocusPlugin />
-              <CodeHighlightPlugin />
-              <ListPlugin />
-              <LinkPlugin />
-              <AutoLinkPlugin />
-              {/* <LexicalOnChangePlugin onChange={onChange} /> */}
-              <ListMaxIndentLevelPlugin maxDepth={7} />
-              <LexicalMarkdownShortcutPlugin transformers={TRANSFORMERS} />
+        <div className="mt-8 overflow-x-scroll p-2">
+          <div className="bg-white rounded-lg shadow-md">
+            <div style={{width:props.eleWidth}} className="mx-auto">
+              <div ref={props.ele} style={{width:props.eleWidth}} className="h-auto editor-inner rounded-md">
+                <RichTextPlugin
+                  contentEditable={<ContentEditable className="editor-input rounded-md" />}
+                  placeholder={<Placeholder />}
+                />
+                <HistoryPlugin />
+                <AutoFocusPlugin />
+                <CodeHighlightPlugin />
+                <ListPlugin />
+                <LinkPlugin />
+                <AutoLinkPlugin />
+                {/* <LexicalOnChangePlugin onChange={onChange} /> */}
+                <ListMaxIndentLevelPlugin maxDepth={7} />
+                <LexicalMarkdownShortcutPlugin transformers={TRANSFORMERS} />
+              </div>
             </div>
           </div>
         </div>
