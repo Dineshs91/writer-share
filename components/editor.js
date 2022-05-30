@@ -68,7 +68,6 @@ export default function Editor(props) {
                 <ListPlugin />
                 <LinkPlugin />
                 <AutoLinkPlugin />
-                {/* <LexicalOnChangePlugin onChange={onChange} /> */}
                 <ListMaxIndentLevelPlugin maxDepth={7} />
                 <LexicalMarkdownShortcutPlugin transformers={TRANSFORMERS} />
               </div>

@@ -6,6 +6,8 @@ import { useRef, useState } from 'react';
 import { toast, Toaster } from 'react-hot-toast';
 import { TwitterPicker } from 'react-color'
 
+import { ColorSwatchIcon } from '@heroicons/react/solid'
+
 function downloadImage(elementRef) {
   toPng(elementRef.current, { cacheBust: true, })
       .then((dataUrl) => {
@@ -87,25 +89,34 @@ export default function Home() {
         </Head>
         <div>
           <Editor bgColor={bgColor} eleWidth={eleWidth} ele={ele} />
-          <div className='mt-12 text-right max-w-[600px] mx-auto flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-4 md:justify-end'>
-            <button onClick={togglePicker} style={{backgroundColor: bgColor}} className='relative w-8 h-8 outline-none border border-gray-400 bg-white shadow-md rounded-full'>
+          <div className='mt-12 text-right max-w-[600px] mx-auto flex flex-col items-center space-y-2 md:flex-row md:space-y-0 md:space-x-4 md:justify-end'>
+            <button onClick={togglePicker} className='relative p-2 outline-none bg-white shadow-md rounded-full hover:shadow'>
+              <ColorSwatchIcon className='w-4 h-4 fill-orange-400 stroke-orange-800' />
               {
                 pickerOpen &&
                 <div className='absolute top-12 -left-2'  onClick={(e) => e.stopPropagation()}>
                   <TwitterPicker
+                    colors={[
+                      "#ffa86b",
+                      "#ffdb79",
+                      "#b3f2b2",
+                      "#77cdff",
+                      "#ff9fb8",
+                      "#ffffff"
+                    ]}
                     onChange={colorChange}
                     color={bgColor}
                   />
                 </div>
               }
             </button>
-            <button className='py-1 px-2 rounded-md shadow-md bg-white hover:shadow hover:shadow-sky-400' onClick={optimizeForTwitter}>
+            <button className='py-1 px-2 rounded-md shadow-md bg-white hover:shadow ' onClick={optimizeForTwitter}>
               Optimize for Twitter
             </button>
-            <button className='py-1 px-2 rounded-md shadow-md bg-white hover:shadow hover:shadow-sky-400' onClick={() => downloadImage(ele)}>
+            <button className='py-1 px-2 rounded-md shadow-md bg-white hover:shadow' onClick={() => downloadImage(ele)}>
               Download
             </button>
-            <button className='py-1 px-2 rounded-md shadow-md bg-white hover:shadow hover:shadow-sky-400' onClick={() => copyAsPng(ele)}>
+            <button className='py-1 px-2 rounded-md shadow-md bg-white hover:shadow' onClick={() => copyAsPng(ele)}>
               Copy as PNG
             </button>
           </div>
