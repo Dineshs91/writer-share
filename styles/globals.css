@@ -79,7 +79,7 @@ body {
   }
   
   .editor-placeholder {
-    color: #999;
+    color: #2d2c2c;
     overflow: hidden;
     position: absolute;
     text-overflow: ellipsis;

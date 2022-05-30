@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Editor from '../components/editor'
 
 import { toPng, toBlob } from 'html-to-image';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { toast, Toaster } from 'react-hot-toast';
 import { TwitterPicker } from 'react-color'
 
@@ -57,7 +57,6 @@ export default function Home() {
   let [bgColor, setBgColor] = useState('white')
 
   const togglePicker = () => {
-    console.log(pickerOpen)
     setPickerOpen(!pickerOpen)
   }
 
@@ -80,6 +79,28 @@ export default function Home() {
     });
   }
 
+  const useOutsideAlerter = (ref) => {
+    useEffect(() => {
+      /**
+       * Alert if clicked on outside of element
+       */
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          setPickerOpen(false)
+        }
+      }
+      // Bind the event listener
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        // Unbind the event listener on clean up
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref]);
+  }
+
+  const wrapperRef = useRef(null);
+  useOutsideAlerter(wrapperRef);
+
   return (
     <section className='bg-gray-100 h-screen'>
       <div className='px-2 lg:max-w-3xl lg:mx-auto pt-24'>
@@ -90,8 +111,8 @@ export default function Home() {
         <div>
           <Editor bgColor={bgColor} eleWidth={eleWidth} ele={ele} />
           <div className='mt-12 text-right max-w-[600px] mx-auto flex flex-col items-center space-y-2 md:flex-row md:space-y-0 md:space-x-4 md:justify-end'>
-            <button onClick={togglePicker} className='relative p-2 outline-none bg-white shadow-md rounded-full hover:shadow'>
-              <ColorSwatchIcon className='w-4 h-4 fill-orange-400 stroke-orange-800' />
+            <button ref={wrapperRef} onClick={togglePicker} className='relative p-2 outline-none bg-white shadow-md rounded-full hover:shadow'>
+              <ColorSwatchIcon className='w-4 h-4 fill-orange-300 stroke-orange-800' />
               {
                 pickerOpen &&
                 <div className='absolute top-12 -left-2'  onClick={(e) => e.stopPropagation()}>
