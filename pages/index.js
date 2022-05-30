@@ -52,7 +52,7 @@ export default function Home() {
 
   let [eleWidth, setEleWidth] = useState('inherit')
   let [pickerOpen, setPickerOpen] = useState(false)
-  let [bgColor, setBgColor] = useState('bg-white')
+  let [bgColor, setBgColor] = useState('white')
 
   const togglePicker = () => {
     console.log(pickerOpen)
