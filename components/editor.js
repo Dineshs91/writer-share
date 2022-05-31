@@ -63,7 +63,7 @@ export default function Editor(props) {
               <div style={{width:props.eleWidth}} className="mx-auto">
                 <div ref={props.ele} style={{width:props.eleWidth}} className="h-auto editor-inner rounded-md">
                   <RichTextPlugin
-                    contentEditable={<ContentEditable style={{backgroundColor: props.bgColor}} className="editor-input rounded-md" />}
+                    contentEditable={<ContentEditable  className="editor-input rounded-md" />}
                     placeholder={<Placeholder />}
                   />
                   <HistoryPlugin />
