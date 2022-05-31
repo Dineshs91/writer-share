@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+.icon-container {
+  display: flex;
+  place-content: center;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.icon-item {
+  width: 100%;
+  overflow: visible;
+  stroke: #fff;
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
 body {
     margin: 0;
     background: #eee;

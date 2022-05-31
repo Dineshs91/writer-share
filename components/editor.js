@@ -18,6 +18,7 @@ import { TRANSFORMERS } from "@lexical/markdown";
 import ListMaxIndentLevelPlugin from "../plugins/ListMaxIndentLevelPlugin";
 import CodeHighlightPlugin from "../plugins/CodeHighlightPlugin";
 import AutoLinkPlugin from "../plugins/AutoLinkPlugin";
+import { motion } from "framer-motion";
 
 function Placeholder() {
   return <div className="editor-placeholder">Enter some text...</div>;
@@ -51,29 +52,33 @@ export default function Editor(props) {
     <LexicalComposer initialConfig={editorConfig}>
       <div className="editor-container w-full">
         <div className="w-fit md:w-full bg-white px-4 rounded-lg shadow-lg">
-          <ToolbarPlugin />
+          <motion.li className='item' variants={props.item}>
+            <ToolbarPlugin />
+          </motion.li>
         </div>
 
-        <div className="mt-8 overflow-x-scroll py-4">
-          <div style={{backgroundColor: props.bgColor}} className="rounded-lg shadow-lg">
-            <div style={{width:props.eleWidth}} className="mx-auto">
-              <div ref={props.ele} style={{width:props.eleWidth}} className="h-auto editor-inner rounded-md">
-                <RichTextPlugin
-                  contentEditable={<ContentEditable style={{backgroundColor: props.bgColor}} className="editor-input rounded-md" />}
-                  placeholder={<Placeholder />}
-                />
-                <HistoryPlugin />
-                <AutoFocusPlugin />
-                <CodeHighlightPlugin />
-                <ListPlugin />
-                <LinkPlugin />
-                <AutoLinkPlugin />
-                <ListMaxIndentLevelPlugin maxDepth={7} />
-                <LexicalMarkdownShortcutPlugin transformers={TRANSFORMERS} />
+        <motion.li className='item' variants={props.item}>
+          <div className="mt-8 overflow-x-scroll py-4">
+            <div style={{backgroundColor: props.bgColor}} className="rounded-lg shadow-lg">
+              <div style={{width:props.eleWidth}} className="mx-auto">
+                <div ref={props.ele} style={{width:props.eleWidth}} className="h-auto editor-inner rounded-md">
+                  <RichTextPlugin
+                    contentEditable={<ContentEditable style={{backgroundColor: props.bgColor}} className="editor-input rounded-md" />}
+                    placeholder={<Placeholder />}
+                  />
+                  <HistoryPlugin />
+                  <AutoFocusPlugin />
+                  <CodeHighlightPlugin />
+                  <ListPlugin />
+                  <LinkPlugin />
+                  <AutoLinkPlugin />
+                  <ListMaxIndentLevelPlugin maxDepth={7} />
+                  <LexicalMarkdownShortcutPlugin transformers={TRANSFORMERS} />
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </motion.li>
       </div>
     </LexicalComposer>
   );
