@@ -51,10 +51,26 @@ function copyAsPng(elementRef) {
 
 export default function Home() {
   let ele = useRef()
+  const illustrations = [
+    "/images/diary-bro.svg",
+    "/images/blogging-pana.svg",
+    "/images/notes-amico.svg"
+  ]
 
   let [eleWidth, setEleWidth] = useState('inherit')
   let [pickerOpen, setPickerOpen] = useState(false)
   let [bgColor, setBgColor] = useState('white')
+  let [currentIllustration, setCurrentIllustration] = useState(0)
+
+  useEffect(() => {
+    setInterval(() => {
+      let index = currentIllustration + 1
+      if (index > 2) {
+        index = 0
+      }
+      setCurrentIllustration(index)
+    }, 10000)
+  }, [])
 
   const togglePicker = () => {
     setPickerOpen(!pickerOpen)
@@ -102,7 +118,7 @@ export default function Home() {
   useOutsideAlerter(wrapperRef);
 
   return (
-    <section className='bg-gray-100 h-screen'>
+    <section className='main h-screen bg-[#ffeccc]'>
       <div className='px-2 lg:max-w-3xl lg:mx-auto pt-24'>
         <Toaster/>
         <Head>
@@ -143,6 +159,19 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      <img className={'absolute w-52 h-auto bottom-10 right-10 ease-in-out transition-opacity delay-1000 ' + (currentIllustration !== 0 ? "opacity-0": "opacity-100")} src={illustrations[0]} />
+      <img className={'absolute w-52 h-auto bottom-10 right-10 ease-in-out transition-opacity delay-1000 ' + (currentIllustration !== 1 ? "opacity-0": "opacity-100")} src={illustrations[1]} />
+      <img className={'absolute w-52 h-auto bottom-10 right-10 ease-in-out transition-opacity delay-1000 ' + (currentIllustration !== 2 ? "opacity-0": "opacity-100")} src={illustrations[2]} />
+
+      <footer className='absolute bottom-0 w-full'>
+        <div className='text-center my-2 text-gray-700 text-sm'>
+          Built by <a className='underline' href="https://twitter.com/SDinesh91">@SDinesh91</a>
+        </div>
+        <div className='text-xs my-1 text-center text-gray-500'>
+          <a href="https://storyset.com/work">Work illustrations by Storyset</a>
+        </div>
+      </footer>
     </section>
   )
 }
