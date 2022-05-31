@@ -118,7 +118,7 @@ export default function Home() {
   useOutsideAlerter(wrapperRef);
 
   return (
-    <section className='main h-screen bg-[#ffeccc]'>
+    <section className='main h-screen bg-gradient-to-br from-[#ffeccc] via-orange-100 to-white'>
       <div className='px-2 lg:max-w-3xl lg:mx-auto pt-24'>
         <Toaster/>
         <Head>
