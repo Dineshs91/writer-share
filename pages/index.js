@@ -174,6 +174,10 @@ export default function Home() {
 
   return (
     <section className='main h-screen bg-gradient-to-br from-[#ffc86c] via-orange-200 to-white'>
+      <Head>
+        <title>Writer Share</title>
+        <link sizes="16x16 32x32" rel="shortcut icon" href="/images/favicon.png" />
+      </Head>
       <div className='absolute top-5 left-5 w-10 h-10 icon-container bg-gray-700'>
         <motion.svg
         xmlns="http://www.w3.org/2000/svg"
@@ -195,9 +199,6 @@ export default function Home() {
       </div>
       <div className='px-2 lg:max-w-3xl lg:mx-auto pt-24'>
         <Toaster/>
-        <Head>
-          <title>Writer Share</title>
-        </Head>
         <motion.ul className='container' variants={container} initial='hidden' animate='visible'>
           <Editor item={item} bgColor={bgColor} eleWidth={eleWidth} ele={ele} />
           <motion.li className='item' variants={item}>
