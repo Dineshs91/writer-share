@@ -173,68 +173,72 @@ export default function Home() {
   useOutsideAlerter(wrapperRef);
 
   return (
-    <section className='main h-screen bg-gradient-to-br from-[#ffc86c] via-orange-200 to-white'>
+    <section className='flex flex-col min-h-screen bg-gradient-to-br from-[#ffc86c] via-orange-200 to-white'>
       <Head>
         <title>Writer Share</title>
         <link sizes="16x16 32x32" rel="shortcut icon" href="/images/favicon.png" />
       </Head>
-      <div className='absolute top-5 left-5 w-10 h-10 icon-container bg-gray-700'>
-        <motion.svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="20 -20 200 400"
-        className="icon-item"
-        >
-          <motion.path
-            d="M12.809,238.52L0,306.637l68.118-12.809l184.277-184.277l-55.309-55.309L12.809,238.52z M60.79,279.943l-41.992,7.896
-            l7.896-41.992L197.086,75.455l34.096,34.096L60.79,279.943z"
-            variants={icon}
-            initial="hidden"
-            animate="visible"
-            transition={{
-              default: { duration: 2, ease: "easeInOut" },
-              fill: { duration: 2, ease: [1, 0, 0.8, 1] }
-            }}
-          />
-        </motion.svg>
+      <div className='p-4'>
+        <div className='w-10 h-10 icon-container bg-gray-700'>
+          <motion.svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="20 -20 200 400"
+          className="icon-item"
+          >
+            <motion.path
+              d="M12.809,238.52L0,306.637l68.118-12.809l184.277-184.277l-55.309-55.309L12.809,238.52z M60.79,279.943l-41.992,7.896
+              l7.896-41.992L197.086,75.455l34.096,34.096L60.79,279.943z"
+              variants={icon}
+              initial="hidden"
+              animate="visible"
+              transition={{
+                default: { duration: 2, ease: "easeInOut" },
+                fill: { duration: 2, ease: [1, 0, 0.8, 1] }
+              }}
+            />
+          </motion.svg>
+        </div>
       </div>
-      <div className='px-2 lg:max-w-3xl lg:mx-auto pt-24'>
-        <Toaster/>
-        <motion.ul className='container' variants={container} initial='hidden' animate='visible'>
-          <Editor item={item} bgColor={bgColor} eleWidth={eleWidth} ele={ele} />
-          <motion.li className='item' variants={item}>
-            <div className='mt-12 text-right max-w-[600px] mx-auto flex flex-col items-center space-y-2 md:flex-row md:space-y-0 md:space-x-4 md:justify-end'>
-              <button ref={wrapperRef} onClick={togglePicker} className='relative p-2 outline-none bg-white shadow-md rounded-full hover:shadow'>
-                <ColorSwatchIcon className='w-4 h-4 fill-orange-300 stroke-orange-800' />
-                {
-                  pickerOpen &&
-                  <div className='absolute top-12 -left-2'  onClick={(e) => e.stopPropagation()}>
-                    <TwitterPicker
-                      colors={[
-                        "#ffa86b",
-                        "#ffdb79",
-                        "#b3f2b2",
-                        "#77cdff",
-                        "#ff9fb8",
-                        "#ffffff"
-                      ]}
-                      onChange={colorChange}
-                      color={bgColor}
-                    />
-                  </div>
-                }
-              </button>
-              <button className='py-1 px-2 rounded-md shadow-md font-semibold text-sky-100 bg-sky-500 hover:shadow ' onClick={optimizeForTwitter}>
-                Optimize for Twitter
-              </button>
-              <button className='py-1 px-2 rounded-md shadow-md bg-white hover:shadow' onClick={() => downloadImage(ele)}>
-                Download
-              </button>
-              <button className='py-1 px-2 rounded-md shadow-md bg-white hover:shadow' onClick={() => copyAsPng(ele)}>
-                Copy as PNG
-              </button>
-            </div>
-          </motion.li>
-        </motion.ul>
+      <div className='flex-grow flex flex-col justify-center items-center'>
+        <div className='px-2 lg:max-w-3xl lg:mx-auto'>
+          <Toaster/>
+          <motion.ul className='container' variants={container} initial='hidden' animate='visible'>
+            <Editor item={item} bgColor={bgColor} eleWidth={eleWidth} ele={ele} />
+            <motion.li className='item' variants={item}>
+              <div className='mt-12 text-right max-w-[600px] mx-auto flex flex-col items-center space-y-2 md:flex-row md:space-y-0 md:space-x-4 md:justify-end'>
+                <button ref={wrapperRef} onClick={togglePicker} className='relative p-2 outline-none bg-white shadow-md rounded-full hover:shadow'>
+                  <ColorSwatchIcon className='w-4 h-4 fill-orange-300 stroke-orange-800' />
+                  {
+                    pickerOpen &&
+                    <div className='absolute top-12 -left-2'  onClick={(e) => e.stopPropagation()}>
+                      <TwitterPicker
+                        colors={[
+                          "#ffa86b",
+                          "#ffdb79",
+                          "#b3f2b2",
+                          "#77cdff",
+                          "#ff9fb8",
+                          "#ffffff"
+                        ]}
+                        onChange={colorChange}
+                        color={bgColor}
+                      />
+                    </div>
+                  }
+                </button>
+                <button className='py-1 px-2 rounded-md shadow-md font-semibold text-sky-100 bg-sky-500 hover:shadow ' onClick={optimizeForTwitter}>
+                  Optimize for Twitter
+                </button>
+                <button className='py-1 px-2 rounded-md shadow-md bg-white hover:shadow' onClick={() => downloadImage(ele)}>
+                  Download
+                </button>
+                <button className='py-1 px-2 rounded-md shadow-md bg-white hover:shadow' onClick={() => copyAsPng(ele)}>
+                  Copy as PNG
+                </button>
+              </div>
+            </motion.li>
+          </motion.ul>
+        </div>
       </div>
 
       <motion.ul className='container absolute bottom-10 right-10' variants={illustrationContainer} initial='hidden' animate='visible'>
@@ -245,7 +249,7 @@ export default function Home() {
         </motion.li>
       </motion.ul>
 
-      <footer className='w-full pt-36'>
+      <footer className='w-full'>
         <div className='text-center my-2 text-gray-700 text-sm'>
           Built by <a className='underline' href="https://twitter.com/SDinesh91">@SDinesh91</a>
         </div>
