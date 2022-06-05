@@ -245,7 +245,7 @@ export default function Home() {
         </motion.li>
       </motion.ul>
 
-      <footer className='absolute bottom-0 w-full'>
+      <footer className='w-full pt-36'>
         <div className='text-center my-2 text-gray-700 text-sm'>
           Built by <a className='underline' href="https://twitter.com/SDinesh91">@SDinesh91</a>
         </div>
