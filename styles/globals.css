@@ -85,7 +85,7 @@ body {
   }
   
   .editor-input {
-    min-height: 150px;
+    min-height: 50px;
     resize: none;
     font-size: 16px;
     caret-color: rgb(5, 5, 5);
