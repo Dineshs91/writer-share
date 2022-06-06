@@ -5,6 +5,7 @@ import { toPng, toBlob } from 'html-to-image';
 import { useRef, useState, useEffect } from 'react';
 import { toast, Toaster } from 'react-hot-toast';
 import { TwitterPicker } from 'react-color'
+import { useIntervalWhen } from "rooks";
 
 import { ColorSwatchIcon } from '@heroicons/react/solid'
 import { motion } from "framer-motion";
@@ -117,15 +118,18 @@ export default function Home() {
   let [bgColor, setBgColor] = useState('white')
   let [currentIllustration, setCurrentIllustration] = useState(0)
 
-  useEffect(() => {
-    setInterval(() => {
+  useIntervalWhen(
+    () => {
       let index = currentIllustration + 1
       if (index > 2) {
         index = 0
       }
       setCurrentIllustration(index)
-    }, 10000)
-  }, [])
+    },
+    5000, // run callback every 1 second
+    true, // start the timer when it's true
+    true // no need to wait for the first interval
+  );
 
   const togglePicker = () => {
     setPickerOpen(!pickerOpen)
