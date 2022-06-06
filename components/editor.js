@@ -58,7 +58,7 @@ export default function Editor(props) {
         </div>
 
         <motion.li className='item' variants={props.item}>
-          <div className="mt-8 overflow-x-scroll py-8 px-1">
+          <div className="mt-4 overflow-x-scroll py-8 px-1">
             <div style={{backgroundColor: props.bgColor}} className="rounded-2xl shadow-lg">
               <div style={{width:props.eleWidth}} className="mx-auto">
                 <div ref={props.ele} style={{width:props.eleWidth, backgroundColor: props.bgColor}} className="h-auto editor-inner rounded-2xl p-2">

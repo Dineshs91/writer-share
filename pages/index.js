@@ -206,14 +206,15 @@ export default function Home() {
       <div className='flex flex-col justify-center items-center pt-24 pb-40'>
         <div className='px-2 w-full max-w-xs md:max-w-xl lg:max-w-3xl lg:mx-auto'>
           <Toaster
-            position="bottom-right"
+            position="top-right"
           />
           <motion.ul className='container' variants={container} initial='hidden' animate='visible'>
             <Editor item={item} bgColor={bgColor} eleWidth={eleWidth} ele={ele} />
             <motion.li className='item' variants={item}>
-              <div className='text-right max-w-[600px] mx-auto flex flex-col items-center space-y-2 md:flex-row md:space-y-0 md:space-x-4 md:justify-end'>
-                <button ref={wrapperRef} onClick={togglePicker} className='relative p-2 outline-none bg-white shadow-md rounded-full hover:shadow'>
+              <div className='text-right max-w-[600px] mx-auto flex flex-col items-center space-y-4 md:flex-row md:space-y-0 md:space-x-4 md:justify-end'>
+                <button ref={wrapperRef} onClick={togglePicker} className='flex items-center justify-center space-x-2 w-44 md:w-fit relative px-2 py-1 outline-none bg-white shadow-md rounded-md hover:shadow'>
                   <ColorSwatchIcon className='w-4 h-4 fill-orange-300 stroke-orange-800' />
+                  <p>Color</p>
                   {
                     pickerOpen &&
                     <div className='absolute top-12 -left-2'  onClick={(e) => e.stopPropagation()}>
@@ -232,13 +233,13 @@ export default function Home() {
                     </div>
                   }
                 </button>
-                <button className='py-1 px-2 rounded-md shadow-md font-semibold text-sky-100 bg-sky-500 hover:shadow ' onClick={optimizeForTwitter}>
+                <button className='w-44 md:w-fit py-1 px-2 rounded-md shadow-md font-semibold text-sky-100 bg-sky-500 hover:shadow ' onClick={optimizeForTwitter}>
                   Optimize for Twitter
                 </button>
-                <button className='py-1 px-2 rounded-md shadow-md bg-white hover:shadow' onClick={() => copyAsPng(ele)}>
+                <button className='w-44 md:w-fit py-1 px-2 rounded-md shadow-md bg-white hover:shadow' onClick={() => copyAsPng(ele)}>
                   Copy as PNG
                 </button>
-                <button className='py-1 px-2 rounded-md shadow-md bg-white hover:shadow' onClick={() => downloadImage(ele)}>
+                <button className='w-44 md:w-fit py-1 px-2 rounded-md shadow-md bg-white hover:shadow' onClick={() => downloadImage(ele)}>
                   Download
                 </button>
               </div>
