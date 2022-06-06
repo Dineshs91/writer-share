@@ -51,7 +51,7 @@ export default function Editor(props) {
   return (
     <LexicalComposer initialConfig={editorConfig}>
       <div className="editor-container w-full">
-        <div className="overflow-x-scroll md:w-full bg-white px-4 rounded-lg shadow-xl">
+        <div className="overflow-x-scroll md:w-full bg-white px-4 rounded-xl shadow-xl">
           <motion.li className='item' variants={props.item}>
             <ToolbarPlugin />
           </motion.li>
@@ -59,11 +59,11 @@ export default function Editor(props) {
 
         <motion.li className='item' variants={props.item}>
           <div className="mt-8 overflow-x-scroll py-8 px-1">
-            <div style={{backgroundColor: props.bgColor}} className="rounded-lg shadow-xl">
+            <div style={{backgroundColor: props.bgColor}} className="rounded-xl shadow-xl">
               <div style={{width:props.eleWidth}} className="mx-auto">
-                <div ref={props.ele} style={{width:props.eleWidth, backgroundColor: props.bgColor}} className="h-auto editor-inner rounded-md">
+                <div ref={props.ele} style={{width:props.eleWidth, backgroundColor: props.bgColor}} className="h-auto editor-inner rounded-xl">
                   <RichTextPlugin
-                    contentEditable={<ContentEditable  className="editor-input rounded-md" />}
+                    contentEditable={<ContentEditable  className="editor-input" />}
                     placeholder={<Placeholder />}
                   />
                   <HistoryPlugin />

@@ -200,16 +200,16 @@ export default function Home() {
         </div>
 
         <div className='flex-grow flex items-center justify-center'>
-          <h1 className='font-bold text-3xl'>Write. Format. Share.</h1>
+          <h1 className='font-bold text-xl md:text-3xl font-poppins'>Write. Format. Share.</h1>
         </div>
       </div>
       <div className='flex-grow flex flex-col justify-center items-center'>
-        <div className='px-2 max-w-[300px] md:max-w-xl lg:max-w-3xl lg:mx-auto'>
+        <div className='px-2 max-w-xs md:max-w-xl lg:max-w-3xl lg:mx-auto'>
           <Toaster/>
           <motion.ul className='container' variants={container} initial='hidden' animate='visible'>
             <Editor item={item} bgColor={bgColor} eleWidth={eleWidth} ele={ele} />
             <motion.li className='item' variants={item}>
-              <div className='mt-12 text-right max-w-[600px] mx-auto flex flex-col items-center space-y-2 md:flex-row md:space-y-0 md:space-x-4 md:justify-end'>
+              <div className='text-right max-w-[600px] mx-auto flex flex-col items-center space-y-2 md:flex-row md:space-y-0 md:space-x-4 md:justify-end'>
                 <button ref={wrapperRef} onClick={togglePicker} className='relative p-2 outline-none bg-white shadow-md rounded-full hover:shadow'>
                   <ColorSwatchIcon className='w-4 h-4 fill-orange-300 stroke-orange-800' />
                   {
