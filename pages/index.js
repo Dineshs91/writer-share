@@ -204,7 +204,7 @@ export default function Home() {
         </div>
       </div>
       <div className='flex-grow flex flex-col justify-center items-center'>
-        <div className='px-2 max-w-xs md:max-w-xl lg:max-w-3xl lg:mx-auto'>
+        <div className='px-2 w-full max-w-xs md:max-w-xl lg:max-w-3xl lg:mx-auto'>
           <Toaster/>
           <motion.ul className='container' variants={container} initial='hidden' animate='visible'>
             <Editor item={item} bgColor={bgColor} eleWidth={eleWidth} ele={ele} />

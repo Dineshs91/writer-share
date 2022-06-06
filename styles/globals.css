@@ -101,8 +101,8 @@ body {
     overflow: hidden;
     position: absolute;
     text-overflow: ellipsis;
-    top: 15px;
-    left: 10px;
+    top: 21px;
+    left: 20px;
     font-size: 15px;
     user-select: none;
     display: inline-block;
