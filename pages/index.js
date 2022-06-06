@@ -175,7 +175,7 @@ export default function Home() {
   return (
     <section className='flex flex-col min-h-screen bg-gradient-to-br from-[#fbefdb] via-[#ffedcd] to-white'>
       <Head>
-        <title>Writer Share</title>
+        <title>Writer Share - Write. Format. Share.</title>
         <link sizes="16x16 32x32" rel="shortcut icon" href="/images/favicon.png" />
       </Head>
       <div className='p-4 flex items-center'>
