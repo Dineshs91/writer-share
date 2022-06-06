@@ -173,12 +173,12 @@ export default function Home() {
   useOutsideAlerter(wrapperRef);
 
   return (
-    <section className='flex flex-col min-h-screen bg-gradient-to-br from-[#ffc86c] via-orange-200 to-white'>
+    <section className='flex flex-col min-h-screen bg-gradient-to-br from-[#fbefdb] via-[#ffedcd] to-white'>
       <Head>
         <title>Writer Share</title>
         <link sizes="16x16 32x32" rel="shortcut icon" href="/images/favicon.png" />
       </Head>
-      <div className='p-4'>
+      <div className='p-4 flex items-center'>
         <div className='w-10 h-10 icon-container bg-gray-700'>
           <motion.svg
           xmlns="http://www.w3.org/2000/svg"
@@ -198,9 +198,13 @@ export default function Home() {
             />
           </motion.svg>
         </div>
+
+        <div className='flex-grow flex items-center justify-center'>
+          <h1 className='font-bold text-3xl'>Write. Format. Share.</h1>
+        </div>
       </div>
       <div className='flex-grow flex flex-col justify-center items-center'>
-        <div className='px-2 lg:max-w-3xl lg:mx-auto'>
+        <div className='px-2 max-w-[300px] md:max-w-xl lg:max-w-3xl lg:mx-auto'>
           <Toaster/>
           <motion.ul className='container' variants={container} initial='hidden' animate='visible'>
             <Editor item={item} bgColor={bgColor} eleWidth={eleWidth} ele={ele} />
@@ -229,11 +233,11 @@ export default function Home() {
                 <button className='py-1 px-2 rounded-md shadow-md font-semibold text-sky-100 bg-sky-500 hover:shadow ' onClick={optimizeForTwitter}>
                   Optimize for Twitter
                 </button>
-                <button className='py-1 px-2 rounded-md shadow-md bg-white hover:shadow' onClick={() => downloadImage(ele)}>
-                  Download
-                </button>
                 <button className='py-1 px-2 rounded-md shadow-md bg-white hover:shadow' onClick={() => copyAsPng(ele)}>
                   Copy as PNG
+                </button>
+                <button className='py-1 px-2 rounded-md shadow-md bg-white hover:shadow' onClick={() => downloadImage(ele)}>
+                  Download
                 </button>
               </div>
             </motion.li>
@@ -241,7 +245,7 @@ export default function Home() {
         </div>
       </div>
 
-      <motion.ul className='container absolute bottom-10 right-10' variants={illustrationContainer} initial='hidden' animate='visible'>
+      <motion.ul className='hidden lg:block container absolute bottom-10 right-10' variants={illustrationContainer} initial='hidden' animate='visible'>
         <motion.li className='item' variants={illustrationItem}>
           <img className={'absolute w-52 h-auto bottom-10 right-10 ease-in-out transition-opacity delay-1000 ' + (currentIllustration !== 0 ? "opacity-0": "opacity-100")} src={illustrations[0]} />
           <img className={'absolute w-52 h-auto bottom-10 right-10 ease-in-out transition-opacity delay-1000 ' + (currentIllustration !== 1 ? "opacity-0": "opacity-100")} src={illustrations[1]} />
@@ -250,10 +254,10 @@ export default function Home() {
       </motion.ul>
 
       <footer className='w-full'>
-        <div className='text-center my-2 text-gray-700 text-sm'>
-          Built by <a className='underline' href="https://twitter.com/SDinesh91">@SDinesh91</a>
+        <div className='text-center my-2 text-gray-700 text-sm font-bold'>
+          Built by <a className='underline text-blue-500' href="https://twitter.com/SDinesh91">Dinesh S</a>
         </div>
-        <div className='text-xs my-1 text-center text-gray-500'>
+        <div className='text-xs my-1 text-center text-gray-400'>
           <a href="https://storyset.com/work">Work illustrations by Storyset</a>
         </div>
       </footer>

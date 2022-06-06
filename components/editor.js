@@ -51,15 +51,15 @@ export default function Editor(props) {
   return (
     <LexicalComposer initialConfig={editorConfig}>
       <div className="editor-container w-full">
-        <div className=" overflow-x-scroll md:w-full bg-white px-4 rounded-lg shadow-lg">
+        <div className="overflow-x-scroll md:w-full bg-white px-4 rounded-lg shadow-xl">
           <motion.li className='item' variants={props.item}>
             <ToolbarPlugin />
           </motion.li>
         </div>
 
         <motion.li className='item' variants={props.item}>
-          <div className="mt-8 overflow-x-scroll py-4">
-            <div style={{backgroundColor: props.bgColor}} className="rounded-lg shadow-lg">
+          <div className="mt-8 overflow-x-scroll py-8 px-1">
+            <div style={{backgroundColor: props.bgColor}} className="rounded-lg shadow-xl">
               <div style={{width:props.eleWidth}} className="mx-auto">
                 <div ref={props.ele} style={{width:props.eleWidth, backgroundColor: props.bgColor}} className="h-auto editor-inner rounded-md">
                   <RichTextPlugin
