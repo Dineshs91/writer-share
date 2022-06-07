@@ -207,7 +207,7 @@ export default function Home() {
           <h1 className='font-bold text-xl md:text-3xl font-poppins'>Write. Format. Share.</h1>
         </div>
       </div>
-      <div className='flex flex-col justify-center items-center pt-24 pb-40'>
+      <div className='flex flex-col justify-center items-center pt-14 pb-40'>
         <div className='px-2 w-full max-w-xs md:max-w-xl lg:max-w-3xl lg:mx-auto'>
           <Toaster
             position="top-right"
