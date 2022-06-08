@@ -20,6 +20,8 @@ import CodeHighlightPlugin from "../plugins/CodeHighlightPlugin";
 import AutoLinkPlugin from "../plugins/AutoLinkPlugin";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { fontFamilies } from "../utils/constants";
+import Font from "../components/font";
 
 function Placeholder() {
   return <div className="editor-placeholder">Enter some text...</div>;
@@ -50,44 +52,56 @@ const editorConfig = {
 
 export default function Editor(props) {
   let [fontSize, setFontSize] = useState(15)
+  let [selectedFont, setSelectedFont] = useState(fontFamilies[0])
 
   const fontSizeChange = (val) => {
-    console.log(val)
     setFontSize(val)
   }
 
-  return (
-    <LexicalComposer initialConfig={editorConfig}>
-      <div className="editor-container w-full">
-        <div className="overflow-x-scroll md:w-full bg-white px-4 rounded-xl shadow-lg">
-          <motion.li className='item' variants={props.item}>
-            <ToolbarPlugin fontSizeChange={fontSizeChange} fontSize={fontSize} />
-          </motion.li>
-        </div>
+  const selectedFontChange = (val) => {
+    setSelectedFont(val)
+  }
 
-        <motion.li className='item' variants={props.item}>
-          <div className="mt-4 overflow-x-scroll py-8 px-1">
-            <div style={{backgroundColor: props.bgColor}} className="rounded-2xl shadow-lg">
-              <div style={{width:props.eleWidth}} className="mx-auto">
-                <div ref={props.ele} style={{fontSize:fontSize + "px", width:props.eleWidth, backgroundColor:props.bgColor}} className="h-auto editor-inner rounded-2xl p-2">
-                  <RichTextPlugin
-                    contentEditable={<ContentEditable  className="editor-input" />}
-                    placeholder={<Placeholder />}
-                  />
-                  <HistoryPlugin />
-                  <AutoFocusPlugin />
-                  <CodeHighlightPlugin />
-                  <ListPlugin />
-                  <LinkPlugin />
-                  <AutoLinkPlugin />
-                  <ListMaxIndentLevelPlugin maxDepth={7} />
-                  <LexicalMarkdownShortcutPlugin transformers={TRANSFORMERS} />
+  return (
+    <section>
+      <Font fontFamily={selectedFont} />
+      <LexicalComposer initialConfig={editorConfig}>
+        <div className="editor-container w-full">
+          <div className="overflow-x-scroll md:w-full bg-white px-4 rounded-xl shadow-lg">
+            <motion.li className='item' variants={props.item}>
+              <ToolbarPlugin 
+                fontSizeChange={fontSizeChange}
+                fontSize={fontSize} 
+                selectedFont={selectedFont}
+                selectedFontChange={selectedFontChange}
+              />
+            </motion.li>
+          </div>
+
+          <motion.li className='item' variants={props.item}>
+            <div className="mt-4 overflow-x-scroll py-8 px-1">
+              <div style={{backgroundColor: props.bgColor}} className="rounded-2xl shadow-lg">
+                <div style={{width:props.eleWidth}} className="mx-auto">
+                  <div ref={props.ele} style={{fontFamily: selectedFont, fontSize:fontSize + "px", width:props.eleWidth, backgroundColor:props.bgColor}} className="h-auto editor-inner rounded-2xl p-2">
+                    <RichTextPlugin
+                      contentEditable={<ContentEditable  className="editor-input" />}
+                      placeholder={<Placeholder />}
+                    />
+                    <HistoryPlugin />
+                    <AutoFocusPlugin />
+                    <CodeHighlightPlugin />
+                    <ListPlugin />
+                    <LinkPlugin />
+                    <AutoLinkPlugin />
+                    <ListMaxIndentLevelPlugin maxDepth={7} />
+                    <LexicalMarkdownShortcutPlugin transformers={TRANSFORMERS} />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </motion.li>
-      </div>
-    </LexicalComposer>
+          </motion.li>
+        </div>
+      </LexicalComposer>
+    </section>
   );
 }

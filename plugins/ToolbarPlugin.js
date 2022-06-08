@@ -39,6 +39,7 @@ import {
   getDefaultCodeLanguage,
   getCodeLanguages
 } from "@lexical/code";
+import { fontFamilies } from "../utils/constants";
 
 const LowPriority = 1;
 
@@ -577,6 +578,13 @@ export default function ToolbarPlugin(props) {
       ) : (
         <>
           <input className="toolbar-item font-size" onChange={(e) => props.fontSizeChange(e.target.value)} value={props.fontSize} type="number" />
+          <select value={props.selectedFont} onChange={(e) => props.selectedFontChange(e.target.value)} className="toolbar-item font-family">
+            {
+              fontFamilies.map((fontName) => {
+                return <option value={fontName}>{fontName}</option>
+              })
+            }
+          </select>
           <button
             onClick={() => {
               editor.dispatchCommand(FORMAT_TEXT_COMMAND, "bold");
