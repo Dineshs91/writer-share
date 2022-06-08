@@ -87,7 +87,7 @@ body {
   .editor-input {
     min-height: 50px;
     resize: none;
-    font-size: 16px;
+    font-size: inherit;
     caret-color: rgb(5, 5, 5);
     position: relative;
     tab-size: 1;
@@ -444,6 +444,13 @@ body {
   .toolbar select.code-language {
     text-transform: capitalize;
     width: 130px;
+  }
+
+  .toolbar input.toolbar-item.font-size {
+    width: 50px;
+    border: 1px solid #d6d3d3;
+    border-radius: 0.5rem;
+    padding-left: 0.25rem;
   }
   
   .toolbar .toolbar-item .text {

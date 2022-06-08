@@ -19,6 +19,7 @@ import ListMaxIndentLevelPlugin from "../plugins/ListMaxIndentLevelPlugin";
 import CodeHighlightPlugin from "../plugins/CodeHighlightPlugin";
 import AutoLinkPlugin from "../plugins/AutoLinkPlugin";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 function Placeholder() {
   return <div className="editor-placeholder">Enter some text...</div>;
@@ -48,12 +49,19 @@ const editorConfig = {
 };
 
 export default function Editor(props) {
+  let [fontSize, setFontSize] = useState(15)
+
+  const fontSizeChange = (val) => {
+    console.log(val)
+    setFontSize(val)
+  }
+
   return (
     <LexicalComposer initialConfig={editorConfig}>
       <div className="editor-container w-full">
         <div className="overflow-x-scroll md:w-full bg-white px-4 rounded-xl shadow-lg">
           <motion.li className='item' variants={props.item}>
-            <ToolbarPlugin />
+            <ToolbarPlugin fontSizeChange={fontSizeChange} fontSize={fontSize} />
           </motion.li>
         </div>
 
@@ -61,7 +69,7 @@ export default function Editor(props) {
           <div className="mt-4 overflow-x-scroll py-8 px-1">
             <div style={{backgroundColor: props.bgColor}} className="rounded-2xl shadow-lg">
               <div style={{width:props.eleWidth}} className="mx-auto">
-                <div ref={props.ele} style={{width:props.eleWidth, backgroundColor: props.bgColor}} className="h-auto editor-inner rounded-2xl p-2">
+                <div ref={props.ele} style={{fontSize:fontSize + "px", width:props.eleWidth, backgroundColor:props.bgColor}} className="h-auto editor-inner rounded-2xl p-2">
                   <RichTextPlugin
                     contentEditable={<ContentEditable  className="editor-input" />}
                     placeholder={<Placeholder />}

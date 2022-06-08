@@ -415,7 +415,7 @@ function BlockOptionsDropdownList({
   );
 }
 
-export default function ToolbarPlugin() {
+export default function ToolbarPlugin(props) {
   const [editor] = useLexicalComposerContext();
   const toolbarRef = useRef(null);
   const [canUndo, setCanUndo] = useState(false);
@@ -576,6 +576,7 @@ export default function ToolbarPlugin() {
         </>
       ) : (
         <>
+          <input className="toolbar-item font-size" onChange={(e) => props.fontSizeChange(e.target.value)} value={props.fontSize} type="number" />
           <button
             onClick={() => {
               editor.dispatchCommand(FORMAT_TEXT_COMMAND, "bold");
