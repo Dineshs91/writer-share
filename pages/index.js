@@ -117,6 +117,8 @@ export default function Home() {
   let [pickerOpen, setPickerOpen] = useState(false)
   let [bgColor, setBgColor] = useState('white')
   let [currentIllustration, setCurrentIllustration] = useState(0)
+  let [isOptimizingSize, setIsOptimizingSize] = useState(false)
+  let currentEle = ele.current
 
   useIntervalWhen(
     () => {
@@ -139,19 +141,29 @@ export default function Home() {
     setBgColor(color.hex)
   }
 
+  useEffect(() => {
+    if(!currentEle || !isOptimizingSize) {
+      return
+    } else if (currentEle.clientWidth === currentEle.clientHeight * 2) {
+      setIsOptimizingSize(false)
+      toast((t) => (
+        <div className='flex items-start justify-center space-x-2'>
+          <img className='w-6 h-6' src="/twitter.svg" />
+          <p>Image optimized for Twitter</p>
+        </div>
+      ), {
+        duration: 2000
+      });
+    } else {
+      setEleWidth(currentEle.clientHeight * 2)
+    }
+  }, [currentEle?.clientHeight, currentEle?.clientWidth, isOptimizingSize])
+
   const optimizeForTwitter = () => {
     // aspect ratio - 2/1 (width/height)
+    setIsOptimizingSize(true)
     let currentEle = ele.current
     setEleWidth(currentEle.clientHeight * 2)
-
-    toast((t) => (
-      <div className='flex items-start justify-center space-x-2'>
-        <img className='w-6 h-6' src="/twitter.svg" />
-        <p>Image optimized for Twitter</p>
-      </div>
-    ), {
-      duration: 2000
-    });
   }
 
   const useOutsideAlerter = (ref) => {
