@@ -10,6 +10,9 @@ import { useIntervalWhen } from "rooks";
 import { ColorSwatchIcon } from '@heroicons/react/solid'
 import { motion } from "framer-motion";
 
+const MIN_FRAME_WIDTH = 360
+const MAX_FRAME_WIDTH = 1200
+
 function downloadImage(elementRef) {
   toPng(elementRef.current, { cacheBust: true, })
       .then((dataUrl) => {
@@ -117,8 +120,11 @@ export default function Home() {
   let [pickerOpen, setPickerOpen] = useState(false)
   let [bgColor, setBgColor] = useState('white')
   let [currentIllustration, setCurrentIllustration] = useState(0)
-  let [isOptimizingSize, setIsOptimizingSize] = useState(false)
+  let [isResizing, setIsResizing] = useState(false)
   let currentEle = ele.current
+  let currentWidth = currentEle?.clientWidth
+  let currentHeight = currentEle?.clientHeight
+  let numResizeSteps = useRef(0)
 
   useIntervalWhen(
     () => {
@@ -142,28 +148,72 @@ export default function Home() {
   }
 
   useEffect(() => {
-    if(!currentEle || !isOptimizingSize) {
+    if (!isResizing) {
       return
-    } else if (currentEle.clientWidth === currentEle.clientHeight * 2) {
-      setIsOptimizingSize(false)
-      toast((t) => (
-        <div className='flex items-start justify-center space-x-2'>
-          <img className='w-6 h-6' src="/twitter.svg" />
-          <p>Image optimized for Twitter</p>
-        </div>
-      ), {
-        duration: 2000
-      });
-    } else {
-      setEleWidth(currentEle.clientHeight * 2)
     }
-  }, [currentEle?.clientHeight, currentEle?.clientWidth, isOptimizingSize])
+
+    const aspectRatio = currentWidth / currentHeight
+    if (isNaN(aspectRatio)) {
+      setIsResizing(false)
+      return
+    }
+
+    const stepSize = 10
+    if (aspectRatio > 2) {
+      const newWidth =
+        numResizeSteps.current > 0
+          ? currentWidth - stepSize
+          : currentHeight * 2.35
+
+      const width = Math.max(
+        MIN_FRAME_WIDTH,
+        Math.min(newWidth, MAX_FRAME_WIDTH)
+      )
+
+      if (width === currentWidth) {
+        toast(
+          'Image may still be cropped by Twitter because it has an aspect ratio > 2:1'
+        )
+        setIsResizing(false)
+        return
+      } else {
+        setEleWidth(width)
+      }
+    } else if (aspectRatio < 0.75) {
+      const newWidth =
+        numResizeSteps.current > 0 ? currentWidth + stepSize : MAX_FRAME_WIDTH
+
+      const width = Math.max(
+        MIN_FRAME_WIDTH,
+        Math.min(newWidth, MAX_FRAME_WIDTH)
+      )
+
+      if (width === currentWidth) {
+        toast(
+          'Image may still be cropped by Twitter because it has an aspect ratio < 3:4'
+        )
+        setIsResizing(false)
+        return
+      } else {
+        setEleWidth(width)
+        if (numResizeSteps.current === 0) {
+          return
+        }
+      }
+    } else {
+      toast.success('Image aspect ratio has been optimized for Twitter')
+      setIsResizing(false)
+      return
+    }
+
+    if (++numResizeSteps.current > 100) {
+      toast('Image may still be cropped by Twitter')
+      setIsResizing(false)
+    }
+  }, [currentWidth, currentHeight, isResizing])
 
   const optimizeForTwitter = () => {
-    // aspect ratio - 2/1 (width/height)
-    setIsOptimizingSize(true)
-    let currentEle = ele.current
-    setEleWidth(currentEle.clientHeight * 2)
+    setIsResizing(true)
   }
 
   const useOutsideAlerter = (ref) => {
