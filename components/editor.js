@@ -24,7 +24,7 @@ import { fontFamilies } from "../utils/constants";
 import Font from "../components/font";
 
 function Placeholder() {
-  return <div className="editor-placeholder">Enter some text...</div>;
+  return <div className="p-11 editor-placeholder">Enter some text...</div>;
 }
 
 const editorConfig = {
@@ -82,7 +82,9 @@ export default function Editor(props) {
             <div className="mt-4 overflow-x-scroll py-8 px-1">
               <div style={{backgroundColor: props.bgColor}} className="rounded-2xl shadow-lg">
                 <div style={{width:props.eleWidth}} className="mx-auto">
-                  <div ref={props.ele} style={{fontFamily: selectedFont, fontSize:fontSize + "px", width:props.eleWidth, backgroundColor:props.bgColor}} className="h-auto editor-inner rounded-2xl p-2">
+                  <div ref={props.ele} 
+                  style={{ padding: "50px", fontFamily: selectedFont, fontSize:fontSize + "px", width:props.eleWidth, backgroundColor: props.bgColor}} 
+                  className="h-auto editor-inner rounded-2xl">
                     <RichTextPlugin
                       contentEditable={<ContentEditable  className="editor-input" />}
                       placeholder={<Placeholder />}

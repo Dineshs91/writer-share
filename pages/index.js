@@ -277,7 +277,7 @@ export default function Home() {
           <motion.ul className='container' variants={container} initial='hidden' animate='visible'>
             <Editor item={item} bgColor={bgColor} eleWidth={eleWidth} ele={ele} />
             <motion.li className='item' variants={item}>
-              <div className='text-right max-w-[600px] mx-auto flex flex-col items-center space-y-4 md:flex-row md:space-y-0 md:space-x-4 md:justify-end'>
+              <div className='text-right mx-auto flex flex-col items-center space-y-4 md:flex-row md:space-y-0 md:space-x-4 md:justify-end'>
                 <button ref={wrapperRef} onClick={togglePicker} className='flex items-center justify-center space-x-2 w-44 md:w-fit relative px-2 py-1 outline-none bg-white shadow-md rounded-md hover:shadow'>
                   <ColorSwatchIcon className='w-4 h-4 fill-orange-300 stroke-orange-800' />
                   <p>Color</p>
