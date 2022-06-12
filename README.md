@@ -10,7 +10,7 @@ with the built-in tools.
 
 **Here's an example:**
 
-Image generated from writer-share.
+Image generated from writer-share and shared on Twitter.
 
 ![Writer share](https://github.com/Dineshs91/writer-share/blob/main/example.png)
 
