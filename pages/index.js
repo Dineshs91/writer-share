@@ -206,7 +206,7 @@ export default function Home() {
       return
     }
 
-    if (++numResizeSteps.current > 100) {
+    if (++numResizeSteps.current > 10) {
       toast('Image may still be cropped by Twitter')
       setIsResizing(false)
     }
