@@ -1,6 +1,6 @@
 ## Writer share
 
-Write. Format. Share
+**Write. Format. Share**
 
 In a tweet you are limited to 280 characters. You also cannot format the text to your liking. 
 Writer share helps you with this. 1st, you get to share your writing as an image and 2nd you can format it
@@ -27,3 +27,6 @@ The app should be running and accessible at http://localhost:3000
 
 The app is deployed on [Linode](linode.com).
 
+## Hackathon
+
+I am submitting this project to `Build with Linode Hackathon` organized by [Hashnode](https://hashnode.com/) and [Linode](https://www.linode.com/)
