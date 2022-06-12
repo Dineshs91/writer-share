@@ -14,6 +14,14 @@ Start the server
 pm2 start writer-share
 ```
 
+### Deploy updates
+
+- ssh into the server
+- cd into `writer-share`
+- Pull latest code from Github `git pull --rebase origin main`
+- Build the code `yarn build`
+- Restart PM2. `pm2 restart writer-share`
+
 ### Install Nginx
 
 `sudo apt install nginx`
