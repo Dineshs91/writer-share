@@ -6,8 +6,13 @@ In a tweet you are limited to 280 characters. You also cannot format the text to
 Writer share helps you with this. 1st, you get to share your writing as an image and 2nd you can format it
 with the built-in tools.
 
-Here's an example:
+![App](https://github.com/Dineshs91/writer-share/blob/main/app.png)
 
+**Here's an example:**
+
+Image generated from writer-share.
+
+![Writer share](https://github.com/Dineshs91/writer-share/blob/main/example.png)
 
 
 ## Local setup
