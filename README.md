@@ -30,6 +30,8 @@ The app should be running and accessible at http://localhost:3000
 
 ## Deployment
 
+Find the deployment steps over here [Deployment README](https://github.com/Dineshs91/writer-share/blob/main/deployments/README.md)
+
 The app is deployed on [Linode](linode.com).
 
 ## Hackathon
