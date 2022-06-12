@@ -2,9 +2,9 @@
 
 **Write. Format. Share**
 
-In a tweet you are limited to 280 characters. You also cannot format the text to your liking. 
-Writer share helps you with this. 1st, you get to share your writing as an image and 2nd you can format it
-with the built-in tools.
+Have you ever wanted to share your thoughts on social media as an image? A tweet is barren as you cannot format the text.
+
+Writer share allows you to share your thoughts with formatted text.
 
 ![App](https://github.com/Dineshs91/writer-share/blob/main/app.png)
 
@@ -22,6 +22,11 @@ Image generated from writer-share and shared on Twitter.
 - yarn dev
 
 The app should be running and accessible at http://localhost:3000
+
+## Tech Stack
+
+- NextJS
+- Tailwindcss
 
 ## Deployment
 
