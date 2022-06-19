@@ -326,6 +326,9 @@ export default function Home() {
         <div className='text-center my-2 text-gray-700 text-sm font-bold'>
           Built by <a className='underline text-blue-500' href="https://twitter.com/SDinesh91">Dinesh S</a>
         </div>
+        <div className='text-xs my-1 text-center font-semibold'>
+          This app is submitted to Linode Hackathon organized by <a className='underline text-blue-500' href="https://hashnode.com/">Hashnode</a> and <a className='underline text-blue-500' href="https://www.linode.com/">Linode</a>
+        </div>
         <div className='text-xs my-1 text-center text-gray-400'>
           <a href="https://storyset.com/work">Work illustrations by Storyset</a>
         </div>
