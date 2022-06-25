@@ -23,10 +23,19 @@ Image generated from writer-share and shared on Twitter.
 
 The app should be running and accessible at http://localhost:3000
 
+Run linter
+
+- yarn lint
+
 ## Tech Stack
 
 - NextJS
 - Tailwindcss
+
+## Libraries that made this possible
+
+- [lexical](https://lexical.dev/)
+- [html-to-image](https://github.com/bubkoo/html-to-image)
 
 ## Deployment
 
