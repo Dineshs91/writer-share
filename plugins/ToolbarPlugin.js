@@ -3,11 +3,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   CAN_REDO_COMMAND,
   CAN_UNDO_COMMAND,
-  REDO_COMMAND,
-  UNDO_COMMAND,
   SELECTION_CHANGE_COMMAND,
   FORMAT_TEXT_COMMAND,
-  FORMAT_ELEMENT_COMMAND,
   $getSelection,
   $isRangeSelection,
   $createParagraphNode,
@@ -580,8 +577,8 @@ export default function ToolbarPlugin(props) {
           <input className="toolbar-item font-size" onChange={(e) => props.fontSizeChange(e.target.value)} value={props.fontSize} type="number" />
           <select value={props.selectedFont} onChange={(e) => props.selectedFontChange(e.target.value)} className="toolbar-item font-family">
             {
-              fontFamilies.map((fontName) => {
-                return <option value={fontName}>{fontName}</option>
+              fontFamilies.map((fontName, index) => {
+                return <option key={index} value={fontName}>{fontName}</option>
               })
             }
           </select>
@@ -641,8 +638,6 @@ export default function ToolbarPlugin(props) {
           </button>
           {isLink &&
             createPortal(<FloatingLinkEditor editor={editor} />, document.body)}
-          
-          
         </>
       )}
     </div>
