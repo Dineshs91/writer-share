@@ -44,7 +44,7 @@ function copyAsPng(elementRef) {
           .catch((err) => {
             console.error(err)
             toast.error(
-              'Error copying image to clipboard. Check the console for details'
+              'Copying image is not supported in your browser. Please download the image'
             )
           })
       })
