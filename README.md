@@ -41,7 +41,7 @@ Run linter
 
 Find the deployment steps over here [Deployment README](https://github.com/Dineshs91/writer-share/blob/main/deployments/README.md)
 
-The app is deployed on [Linode](linode.com).
+The app is deployed on [Linode](https://www.linode.com/) and can be accessed at http://write.dineshs91.com/l
 
 ## Hackathon
 
